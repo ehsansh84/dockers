@@ -1,0 +1,16 @@
+version: '3'
+services:
+  nginx:
+    container_name: nginx
+    image: staticfloat/nginx-certbot
+    restart: unless-stopped
+    ports:
+      - 80:80/tcp
+      - 443:443/tcp
+    environment:
+      CERTBOT_EMAIL: ehsan.shirzadi@gmail.com
+    volumes:
+      - /home/debian/volumes/html:/usr/share/nginx/html
+      - /home/debian/volumes/nginx/conf.d:/etc/nginx/user.conf.d:ro
+        #- /home/debian/volumes/nginx/_conf.d:/etc/nginx/conf.d
+      - /home/debian/volumes/nginx/letsencrypt:/etc/letsencrypt

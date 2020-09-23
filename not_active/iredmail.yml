@@ -1,0 +1,47 @@
+version: '3.3'
+
+services:
+  iredmail:
+    image: iredmail/mariadb:nightly
+    ports:
+      - 3010:80
+      - 3011:443 
+      - 110:110 
+      - 995:995 
+      - 143:143 
+      - 993:993 
+      - 25:25 
+      - 465:465 
+      - 587:587 
+      - 4190:4190
+    restart: always
+    volumes:
+      - iredmail_backup:/var/vmail/backup
+      - iredmail_mailboxes:/var/vmail/vmail1
+      - iredmail_mlmmj:/var/vmail/mlmmj
+      - iredmail_mlmmj_archive:/var/vmail/mlmmj-archive
+      - iredmail_imapsieve_copy:/var/vmail/imapsieve_copy
+      - iredmail_custom:/opt/iredmail/custom
+      - iredmail_ssl:/opt/iredmail/ssl
+      - iredmail_mysql:/var/lib/mysql
+      - iredmail_clamav:/var/lib/clamav
+      - iredmail_sa_rules:/var/lib/spamassassin
+      - iredmail_postfix_queue:/var/spool/postfix
+    environment:
+      HOSTNAME: mail.onmiz.com
+      FIRST_MAIL_DOMAIN: onmiz.com
+      FIRST_MAIL_DOMAIN_ADMIN_PASSWORD: Abcd_1234
+      MLMMJADMIN_API_TOKEN: Abbas
+      ROUNDCUBE_DES_KEY: Abbas
+volumes:
+      iredmail_backup:
+      iredmail_mailboxes:
+      iredmail_mlmmj:
+      iredmail_mlmmj_archive:
+      iredmail_imapsieve_copy:
+      iredmail_custom:
+      iredmail_ssl:
+      iredmail_mysql:
+      iredmail_clamav:
+      iredmail_sa_rules:
+      iredmail_postfix_queue:

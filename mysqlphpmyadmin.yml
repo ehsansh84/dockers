@@ -1,0 +1,45 @@
+version: '3.5'
+
+services:
+  db:
+    image: mysql:latest
+    #image: mysql:5.7.6
+    #image: mysql:5.7
+    container_name: mysql
+    volumes:
+      - /home/debian/volumes/mysql:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Miz@Blog
+      #MYSQL_DATABASE: rojand
+      #MYSQL_USER: rojand
+      #MYSQL_PASSWORD: rojand
+      #    networks:
+      #- projects
+    ports:
+            #- '172.26.0.3:3306:3306'
+            - '127.0.0.1:3306:3306'
+              #            - '172.26.0.3:33060:33060'
+    networks:
+      - external
+  phpmyadmin:
+    depends_on:
+      - db
+    container_name: phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - '8787:80'
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: Miz@Blog
+      UPLOAD_LIMIT: 1G
+      PMA_ARBITRAY: 1
+    networks:
+      - external
+networks:
+        #  projects:
+        #    external: true
+          external:
+            name:  projects
+

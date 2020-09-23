@@ -1,0 +1,15 @@
+version: '3.3'
+services:
+  elasticsearch:
+    container_name: elasticsearch
+    image: elasticsearch:7.8.0
+    restart: unless-stopped
+    ports:
+      - 9200:9200/tcp
+      - 9300:9300/tcp
+    environment:
+      discovery.type: single-node
+    volumes:
+      - /home/debian/volumes/elasticsearch:/var/lib/elasticsearch
+        #      - /home/debian/volumes/elasticsearch/temp:/kirekhar
+      - /home/debian/volumes/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml

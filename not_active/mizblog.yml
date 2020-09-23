@@ -1,0 +1,61 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+
+  db:
+    image: mysql
+    cap_add:
+      - SYS_NICE
+    security_opt:
+      - seccomp:unconfined        
+    volumes:
+            - /home/debian/volumes/mizblog/db:/var/lib/mysql
+              #- ./db:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Miz@Blog?
+      MYSQL_DATABASE: mizblog
+      MYSQL_USER: mizblog
+      MYSQL_PASSWORD: Miz@Blog
+    networks:
+      - wpsite
+    
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress:latest
+    ports:
+      - '8000:80'
+    restart: always
+    volumes: 
+      - /home/debian/volumes/mizblog/wp:/var/www/html']
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: mizblog
+      WORDPRESS_DB_PASSWORD: Miz@Blog
+      WORDPRESS_DB_NAME: mizblog
+    networks:
+      - wpsite
+  phpmyadmin:
+    depends_on:
+      - db
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports: 
+      - '8080:80'
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: Miz@Blog?
+      UPLOAD_LIMIT: 256MB
+    networks:
+      - wpsite
+
+networks:
+  wpsite:
+          #volumes:
+          #  db_data:
+
+              
+
+  
