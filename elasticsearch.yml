@@ -10,6 +10,5 @@ services:
     environment:
       discovery.type: single-node
     volumes:
-      - /home/debian/volumes/elasticsearch:/var/lib/elasticsearch
-        #      - /home/debian/volumes/elasticsearch/temp:/kirekhar
-      - /home/debian/volumes/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - /volumes/elasticsearch:/var/lib/elasticsearch
+      - /volumes/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml

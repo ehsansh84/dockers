@@ -7,7 +7,7 @@ services:
     ports:
       - 27020:27017/tcp
     volumes:
-      - /home/debian/volumes/mongotest/data:/data/db
-        #- /home/debian/volumes/mongodb/mongod.conf:/etc/mongod.conf
+      - /volumes/mongotest/data:/data/db
+        #- /volumes/mongodb/mongod.conf:/etc/mongod.conf
         #    command: [--auth]
 

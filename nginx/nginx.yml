@@ -9,10 +9,10 @@ services:
             - 80:80
             - 443:443
     volumes:
-      - /home/debian/volumes/html:/usr/share/nginx/html
-      #- /home/debian/volumes/nginx/conf.d:/etc/nginx/user.conf.d:ro
-      - /home/debian/volumes/nginx/conf.d:/etc/nginx/conf.d:ro
-      - /home/debian/volumes/nginx/letsencrypt:/etc/letsencrypt
+      - /volumes/html:/usr/share/nginx/html
+      #- /volumes/nginx/conf.d:/etc/nginx/user.conf.d:ro
+      - /volumes/nginx/conf.d:/etc/nginx/conf.d:ro
+      - /volumes/nginx/letsencrypt:/etc/letsencrypt
     networks:
       - external
 networks:
