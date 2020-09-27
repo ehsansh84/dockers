@@ -1,12 +1,12 @@
 version: '3'
 services:
-  nginx:
+  portainer:
     container_name: portainer
     image: portainer/portainer-ce
     restart: unless-stopped
     ports:
-            - 8000:8000
-            - 9000:9000
+            - 8301:8000
+            - 8300:9000
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data 
+      - /volumes/portainer:/data  
