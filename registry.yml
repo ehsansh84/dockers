@@ -1,0 +1,13 @@
+version: '3.3'
+services:
+  registry:
+    container_name: registry
+    image: registry
+    restart: unless-stopped
+    ports:
+      - 5000:5000
+    volumes:
+      - /volumes/registry:/var/lib/registry
+        #- /home/debian/volumes/mongodb/mongod.conf:/etc/mongod.conf
+        #    command: [--auth]
+
