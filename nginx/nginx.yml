@@ -13,9 +13,9 @@ services:
       #- /volumes/nginx/conf.d:/etc/nginx/user.conf.d:ro
       - /volumes/nginx/conf.d:/etc/nginx/conf.d:ro
       - /volumes/nginx/letsencrypt:/etc/letsencrypt
-    networks:
-      - external
-networks:
-  external:
-    name:  projects
+        #    networks:
+        #      - external
+        #networks:
+        #  external:
+        #    name:  projects
 

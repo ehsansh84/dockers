@@ -1,0 +1,14 @@
+version: '3.3'
+services:
+  jenkins:
+    container_name: jenkins
+    image: jenkinsci/bluepcean
+    restart: unless-stopped
+    ports:
+            - 8310:8080
+            - 8311:50000  
+    volumes:
+      - /volumes/jenkins/home:/var/jenkins_home
+      - /volumes/jenkins/root:/root
+      - /var/run/docker.sock:/var/run/docker.sock 
+
