@@ -1,4 +1,5 @@
 FROM nginx
+RUN add-apt-repository ppa:certbot/certbot
 RUN apt update
 RUN apt-get install -y software-properties-common
 RUN add-apt-repository ppa:ondrej/php
@@ -8,5 +9,6 @@ RUN apt-get install -y libxml2-dev php7.3  php7.3-fpm php7.3-cli php7.3-fpm  php
 RUN apt-get install -y vim 
 COPY www.conf /etc/php/7.3/fpm/pool.d/
 RUN  service php7.3-fpm start
+RUN apt install python-certbot-nginx
 #RUN mkdir /etc/letsencrypt
 
