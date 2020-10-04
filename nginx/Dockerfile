@@ -9,6 +9,6 @@ RUN apt-get install -y libxml2-dev php7.3  php7.3-fpm php7.3-cli php7.3-fpm  php
 RUN apt-get install -y vim 
 RUN apt-get install -y python-certbot-nginx
 COPY www.conf /etc/php/7.3/fpm/pool.d/
-RUN  service php7.3-fpm start
+#RUN  service php7.3-fpm start
 #RUN mkdir /etc/letsencrypt
 
