@@ -1,0 +1,10 @@
+version: '3'
+services:
+  icescrum:
+    container_name: icescrum
+    image: icescrum/icescrum
+    restart: unless-stopped
+    ports:
+            - 8312:8080
+    volumes:
+      - /volumes/icescrum:/root

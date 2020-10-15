@@ -1,10 +1,10 @@
 version: '3.5'
 
 services:
-  db:
+  mysql:
     image: mysql:latest
-    #image: mysql:5.7.6
-    #image: mysql:5.7
+          # image: mysql:5.7.6
+          #image: mysql:5.7
     container_name: mysql
     volumes:
       - /volumes/mysql:/var/lib/mysql
@@ -18,28 +18,33 @@ services:
       #- projects
     ports:
             #- '172.26.0.3:3306:3306'
-            - '127.0.0.1:3306:3306'
+            - '127.0.0.1:8308:3306'
               #            - '172.26.0.3:33060:33060'
-    networks:
-      - external
+              #    networks:
+              #      - external
   phpmyadmin:
     depends_on:
-      - db
+      - mysql
     container_name: phpmyadmin
     image: phpmyadmin/phpmyadmin
     restart: always
     ports:
-      - '8787:80'
+      - '8309:80'
     environment:
       PMA_HOST: db
       MYSQL_ROOT_PASSWORD: Miz@Blog
       UPLOAD_LIMIT: 1G
       PMA_ARBITRAY: 1
-    networks:
-      - external
-networks:
+      #    networks:
+      #      - external
+      #networks:
         #  projects:
         #    external: true
+<<<<<<< HEAD
           external:
             name:  nginx_default
+=======
+        #          external:
+                  #            name:  projects
+>>>>>>> d5dab85e411861cb34a8517fdb9ca693e49f6bf0
 
