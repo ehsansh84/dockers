@@ -41,5 +41,5 @@ networks:
         #  projects:
         #    external: true
           external:
-            name:  projects
+            name:  nginx_default
 
