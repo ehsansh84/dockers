@@ -40,11 +40,8 @@ services:
       #networks:
         #  projects:
         #    external: true
-<<<<<<< HEAD
-          external:
-            name:  nginx_default
-=======
+        #  external:
+        #    name:  nginx_default
         #          external:
                   #            name:  projects
->>>>>>> d5dab85e411861cb34a8517fdb9ca693e49f6bf0
 
