@@ -5,7 +5,7 @@ services:
     image: amir20/dozzle:latest
     restart: unless-stopped
     ports:
-            - 8300:8080
+            - 8302:8080
     volumes:
             - /var/run/docker.sock:/var/run/docker.sock
         #- /volumes/mongodb/mongod.conf:/etc/mongod.conf
