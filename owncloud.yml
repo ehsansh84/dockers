@@ -1,0 +1,10 @@
+version: '3.3'
+services:
+  owncloud:
+    container_name: owncloud
+    image: owncloud:8.1
+    restart: unless-stopped
+    ports:
+            - 8313:80
+    volumes:
+      - /volumes/owncloud:/var/www/html
