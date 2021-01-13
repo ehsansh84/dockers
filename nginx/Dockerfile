@@ -1,5 +1,4 @@
 FROM nginx
-RUN add-apt-repository ppa:certbot/certbot
 RUN apt update
 RUN apt-get install -y software-properties-common
 RUN add-apt-repository ppa:ondrej/php
