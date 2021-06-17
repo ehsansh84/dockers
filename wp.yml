@@ -26,4 +26,8 @@ services:
     volumes:
             - /volumes/wp/db1:/var/lib/mysql
 
+networks:
+    default:
+        external:
+            name: dockers_default
 

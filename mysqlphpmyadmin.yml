@@ -25,3 +25,7 @@ services:
       MYSQL_ROOT_PASSWORD: Miz@Blog
       UPLOAD_LIMIT: 1G
       PMA_ARBITRAY: 1
+networks:
+    my-network-name:
+        name: dockers_default
+
