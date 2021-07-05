@@ -1,0 +1,14 @@
+version: '3.3'
+services:
+  gitlab:
+    container_name: gitlab
+    image: gitlab/gitlab-ce:latest
+    restart: unless-stopped
+    ports:
+            - 8104:8080
+            - 8105:50000
+            - 8106:22  
+    volumes:
+      - /volumes/gitlab/config:/etc/gitlab
+      - /volumes/gitlab/logs:/var/log/gitlab
+
