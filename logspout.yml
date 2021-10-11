@@ -1,0 +1,10 @@
+version: '3.3'
+services:
+  logspout:
+    container_name: logspout
+    image: gliderlabs/logspout
+    restart: unless-stopped
+    ports:
+      - 8325:80
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
