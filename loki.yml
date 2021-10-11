@@ -1,0 +1,10 @@
+version: '3.3'
+services:
+  nexus:
+    container_name: loki
+    image: grafana/loki
+    restart: unless-stopped
+    ports:
+            - 8324:3100
+#    volumes:
+#           - /volumes/:/nexus-data
