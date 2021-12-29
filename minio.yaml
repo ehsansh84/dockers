@@ -1,0 +1,14 @@
+version: '3.3'
+services:
+  minio:
+    container_name: minio
+    image: bitnami/minio
+    restart: unless-stopped
+    ports:
+            - 9010:9000
+            - 9001:9001
+    volumes:
+      - /volumes/minio:/data
+        #    environment:
+        #      - MINIO_SERVER_ACCESS_KEY=admin
+        #      - MINIO_SERVER_SECRET_KEY=admin@123
