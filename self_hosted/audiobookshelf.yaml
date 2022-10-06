@@ -1,0 +1,15 @@
+#https://github.com/advplyr/audiobookshelf
+services:
+  audiobookshelf:
+    container_name: audiobookshelf
+    image: ghcr.io/advplyr/audiobookshelf:latest
+    environment:
+      - AUDIOBOOKSHELF_UID=99
+      - AUDIOBOOKSHELF_GID=100
+    ports:
+      - 13378:80
+    volumes:
+      - /volumes/audiobookshelf/audiobooks:/audiobooks
+      - /volumes/audiobookshelf/podcasts:/podcasts
+      - /volumes/audiobookshelf/config:/config
+      - /volumes/audiobookshelf/metadata:/metadata
