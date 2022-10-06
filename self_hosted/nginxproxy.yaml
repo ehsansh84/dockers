@@ -1,7 +1,7 @@
 #https://github.com/NginxProxyManager/nginx-proxy-manager
 version: '3'
 services:
-  app:
+  nginxproxy:
     container_name: nginxproxy
     image: 'jc21/nginx-proxy-manager:latest'
     restart: unless-stopped
