@@ -1,4 +1,4 @@
-#https://github.com/NginxProxyManager/nginx-proxy-manager
+#https://github.com/louislam/uptime-kuma
 version: '3'
 services:
   uptime:
