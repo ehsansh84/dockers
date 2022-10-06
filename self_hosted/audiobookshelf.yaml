@@ -1,4 +1,5 @@
 #https://github.com/advplyr/audiobookshelf
+version: '3'
 services:
   audiobookshelf:
     container_name: audiobookshelf
