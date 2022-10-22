@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  db:
+    image: mariadb:10
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_ROOT_PASSWORD: spivIjonebItlfrUq5rL
+      MYSQL_USER: vikunja
+      MYSQL_PASSWORD: spivIjonebItlfrUq5rL
+      MYSQL_DATABASE: vikunja
+    volumes:
+      - /volumes/vikunja/mysql:/var/lib/mysql
+    restart: unless-stopped
+  api:
+    image: vikunja/api
+    environment:
+      VIKUNJA_DATABASE_HOST: db
+      VIKUNJA_DATABASE_PASSWORD: spivIjonebItlfrUq5rL
+      VIKUNJA_DATABASE_TYPE: mysql
+      VIKUNJA_DATABASE_USER: vikunja
+      VIKUNJA_DATABASE_DATABASE: vikunja
+      VIKUNJA_SERVICE_JWTSECRET: spivIjonebItlfrUq5rL
+      VIKUNJA_SERVICE_FRONTENDURL: http://tasks.ehsanshirzadi.com/
+    ports:
+      - 3456:3456
+    volumes:
+      - /volumes/vikunja/files:/app/vikunja/files
+    depends_on:
+      - db
+    restart: unless-stopped
+  frontend:
+    image: vikunja/frontend
+    ports:
+      - 8003:80
+    environment:
+      VIKUNJA_API_URL: http://tasks.ehsanshirzadi.com:3456/api/v1
+    restart: unless-stopped
