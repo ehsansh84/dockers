@@ -5,9 +5,12 @@ services:
     image: mongo
     restart: unless-stopped
     ports:
-      - 27021:27017/tcp
+      - 27027:27017/tcp
     volumes:
       - /volumes/mongodb/data:/data/db
-        #- /volumes/mongodb/mongod.conf:/etc/mongod.conf
-        #    command: [--auth]
-
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+        #    environment:
+        #      MONGO_INITDB_DATABASE: admin
+        #      MONGO_INITDB_ROOT_USERNAME: root
+        #      MONGO_INITDB_ROOT_PASSWORD: roosh
+    command: --auth
