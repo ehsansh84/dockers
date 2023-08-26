@@ -1,0 +1,51 @@
+version: '3'
+services:
+  opensearch-node1:
+    image: opensearchproject/opensearch:latest
+    container_name: opensearch-node1
+    environment:
+      - discovery.type=single-node
+      - cluster.name=my-opensearch-cluster
+      - node.name=opensearch-node1
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - 9200:9200
+      - 9300:9300
+    volumes:
+      - opensearch-data-node1:/usr/share/opensearch/data
+    networks:
+      - opensearch-net
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.15.0
+    container_name: kibana
+    environment:
+      ELASTICSEARCH_URL: http://opensearch-node1:9200
+    ports:
+      - 5601:5601
+    networks:
+      - opensearch-net
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:7.15.0
+    container_name: logstash
+    volumes:
+      - ./logstash-config:/usr/share/logstash/pipeline
+    environment:
+      ELASTICSEARCH_HOST: "opensearch-node1"
+      ELASTICSEARCH_PORT: "9200"
+    networks:
+      - opensearch-net
+
+volumes:
+  opensearch-data-node1:
+
+networks:
+  opensearch-net:
+    driver: bridge
+
