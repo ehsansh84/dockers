@@ -1,0 +1,30 @@
+version: '3'
+services:
+  opensearch-node1:
+    image: opensearchproject/opensearch:latest
+    container_name: opensearch-node1
+    environment:
+      - discovery.type=single-node
+      - cluster.name=my-opensearch-cluster
+      - node.name=opensearch-node1
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - 9200:9200
+      - 9300:9300
+    volumes:
+      - opensearch-data-node1:/usr/share/opensearch/data
+    networks:
+      - opensearch-net
+
+volumes:
+  opensearch-data-node1:
+
+networks:
+  opensearch-net:
+    driver: bridge
+
