@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  vikunja:
+    image: vikunja/vikunja
+    ports:
+      - "3456:3456"
+    volumes:
+      - /volumes/vikunja/files:/app/vikunja/files
+      - /volumes/vikunja/db:/db
+    restart: unless-stopped
+
